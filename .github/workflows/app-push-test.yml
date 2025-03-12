@@ -14,23 +14,23 @@ jobs:
     env:
       BRANCH_NAME: bot/app-push-test
     steps:
-      # - name: Install R
-      #   uses: r-lib/actions/setup-r@v2
-      #   with:
-      #     use-public-rspm: true
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
 
-      # - name: Install Rhino
-      #   uses: r-lib/actions/setup-r-dependencies@v2
-      #   with:
-      #     packages: vituri/rhino@${{ github.sha }}
+      - name: Install Rhino
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: vituri/rhino@${{ github.sha }}
 
-      # # The previous step installs `renv` using `pak`,
-      # # but it subsequentially fails in the pushed app and breaks the test
-      # # (see https://github.com/rstudio/renv/issues/1772).
-      # # This step is is a workaround and can be removed once the issue is resolved.
-      # - name: Install renv
-      #   shell: Rscript {0}
-      #   run: install.packages("renv")
+      # The previous step installs `renv` using `pak`,
+      # but it subsequentially fails in the pushed app and breaks the test
+      # (see https://github.com/rstudio/renv/issues/1772).
+      # This step is is a workaround and can be removed once the issue is resolved.
+      - name: Install renv
+        shell: Rscript {0}
+        run: install.packages("renv")
 
       - name: Checkout repository
         uses: actions/checkout@v3
