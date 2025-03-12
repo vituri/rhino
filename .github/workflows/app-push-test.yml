@@ -40,6 +40,8 @@ jobs:
           token: ${{ secrets.APP_PUSH_TEST_PAT }}
           persist-credentials: false
 
+      - name: Create file
+        run: echo 'a' > output.txt
 
       - name: Prepare branch
         run: git switch --orphan "$BRANCH_NAME"
